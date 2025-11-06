@@ -1,0 +1,14 @@
+{
+  "name": "droid-key",
+  "compatibility_date": "2025-11-06",
+  "main": "main.ts",
+  "kv_namespaces": [
+    {
+      "binding": "API_KEYS",
+      "id": "YOUR_KV_NAMESPACE_ID"
+    }
+  ],
+  "vars": {
+    "EXPORT_PASSWORD": "admin123"
+  }
+}
