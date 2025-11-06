@@ -1,14 +1,5 @@
 {
   "name": "droid-key",
   "compatibility_date": "2025-11-06",
-  "main": "main.ts",
-  "kv_namespaces": [
-    {
-      "binding": "API_KEYS",
-      "id": "admin123"
-    }
-  ],
-  "vars": {
-    "EXPORT_PASSWORD": "admin123"
-  }
+  "main": "main.ts"
 }
