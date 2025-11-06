@@ -1,7 +1,6 @@
 // main.ts - Cloudflare Workers Version
 interface Env {
   API_KEYS: KVNamespace;
-  EXPORT_PASSWORD?: string;
 }
 
 // ==================== Type Definitions ====================
@@ -371,10 +370,10 @@ async function handleBatchDeleteKeys(req: Request, kv: KVNamespace): Promise<Res
   }
 }
 
-async function handleExportKeys(req: Request, kv: KVNamespace, env: Env): Promise<Response> {
+async function handleExportKeys(req: Request, kv: KVNamespace): Promise<Response> {
   try {
     const { password } = await req.json() as { password: string };
-    const exportPassword = env.EXPORT_PASSWORD || "admin123";
+    const exportPassword = "admin123"; // 硬编码密码
 
     if (password !== exportPassword) {
       return createErrorResponse("密码错误", 401);
@@ -682,7 +681,7 @@ export default {
       }
 
       if (url.pathname === "/api/keys/export" && request.method === "POST") {
-        return await handleExportKeys(request, env.API_KEYS, env);
+        return await handleExportKeys(request, env.API_KEYS);
       }
 
       if (url.pathname.startsWith("/api/keys/") && request.method === "DELETE") {
